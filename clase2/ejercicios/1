@@ -1,0 +1,34 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 1. Carga de datos
+df = pd.___("Social_Network_Ads.csv")   # PISTA: función de pandas para leer archivos CSV
+
+# 2. Estructura general
+print(df.shape)
+print(df.___())        # PISTA: muestra tipos de dato y nulos por columna
+print(df.___())        # PISTA: estadísticos descriptivos (media, min, max, cuartiles)
+
+# 3. Calidad de datos
+print("Nulos por columna:")
+print(df.___().sum())  # PISTA: método que marca con True los valores faltantes
+
+print("Filas duplicadas:", df.___().sum())  # PISTA: método que detecta filas repetidas
+
+# 4. Balance de clases
+print(df["Purchased"].___(normalize=___))   # PISTA: cuenta valores únicos; normalize=True da proporciones
+
+sns.countplot(data=df, x="___")             # PISTA: columna objetivo
+plt.title("Distribución de la variable objetivo")
+plt.show()
+
+# 5. Relación de las variables con la compra
+print(df.groupby("___")[["Age", "EstimatedSalary"]].___())
+# PISTA: agrupá por la columna objetivo y calculá el promedio
+
+sns.boxplot(data=df, x="Purchased", y="___")   # PISTA: probá con "Age" y luego con "EstimatedSalary"
+plt.show()
+
+# 6. Variable categórica
+print(df.groupby("Gender")["Purchased"].___())  # PISTA: ¿qué proporción compra en cada género? Usá el promedio
